@@ -11,9 +11,13 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.primaryColor,
-        textStyle: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+        textStyle: TextStyle(
+          fontSize: 20.sp,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(30.r),
         ),
       ),
     ),
@@ -27,9 +31,13 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.primaryColor,
-        textStyle: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+        textStyle: TextStyle(
+          fontSize: 20.sp,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(30.r),
         ),
       ),
     ),
