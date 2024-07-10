@@ -9,7 +9,7 @@ class BasicAppButton extends StatelessWidget {
   const BasicAppButton({
     super.key,
     required this.text,
-    this.height = 80.0,
+    this.height = 70.0,
     required this.onPressed,
   });
 
@@ -22,7 +22,7 @@ class BasicAppButton extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: const TextStyle(color: Colors.white),
+        style: TextStyle(fontSize: 18.sp, color: Colors.white),
       ),
     );
   }

@@ -11,8 +11,9 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.primaryColor,
+        elevation: 0,
         textStyle: TextStyle(
-          fontSize: 20.sp,
+          fontSize: 16.sp,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
@@ -20,6 +21,12 @@ class AppTheme {
           borderRadius: BorderRadius.circular(30.r),
         ),
       ),
+    ),
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: ZoomPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      },
     ),
   );
 
@@ -31,8 +38,9 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.primaryColor,
+        elevation: 0,
         textStyle: TextStyle(
-          fontSize: 20.sp,
+          fontSize: 16.sp,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
@@ -40,6 +48,12 @@ class AppTheme {
           borderRadius: BorderRadius.circular(30.r),
         ),
       ),
+    ),
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: ZoomPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      },
     ),
   );
 }

@@ -6,4 +6,6 @@ class AppImage {
       '${basePath}img_get_started_bg$pngFormat';
   static const String imgChooseModeBg =
       '${basePath}img_choose_mode_bg$pngFormat';
+  static const String imgSignUpOrSignInBg =
+      '${basePath}img_sign_in_or_sign_up_bg$pngFormat';
 }
