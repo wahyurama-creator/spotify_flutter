@@ -4,14 +4,23 @@ import 'package:spotify_flutter/common/extensions/context_extension.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onPressed;
+  final Widget? title;
+  final bool? isCenterTitle;
 
-  const BasicAppBar({super.key, this.onPressed});
+  const BasicAppBar({
+    super.key,
+    this.onPressed,
+    this.title,
+    this.isCenterTitle,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
+      title: title,
+      centerTitle: isCenterTitle ?? false,
       leading: Padding(
         padding: EdgeInsets.only(left: 8.w),
         child: IconButton(
