@@ -5,7 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_flutter/common/extensions/context_extension.dart';
 import 'package:spotify_flutter/core/configs/assets/app_vector.dart';
 import 'package:spotify_flutter/core/configs/themes/app_color.dart';
+import 'package:spotify_flutter/dependency_injection.dart';
+import 'package:spotify_flutter/domain/entities/network/request/auth/create_user_request.dart';
+import 'package:spotify_flutter/domain/usecases/auth/sign_up_usecase.dart';
 import 'package:spotify_flutter/presentation/screens/authentitcation/pages/sign_in_page/sign_in_page.dart';
+import 'package:spotify_flutter/presentation/screens/root/root_page.dart';
 import 'package:spotify_flutter/presentation/widgets/app_bar/basic_app_bar.dart';
 import 'package:spotify_flutter/presentation/widgets/buttons/basic_app_button.dart';
 import 'package:spotify_flutter/presentation/widgets/text_fields/basic_text_field.dart';
@@ -55,7 +59,7 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: _buildContent(context),
+              children: _buildContent(),
             ),
           ],
         ),
@@ -63,7 +67,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  List<Widget> _buildContent(BuildContext context) => [
+  List<Widget> _buildContent() => [
         SizedBox(height: 30.h),
         Text(
           'Register',
@@ -102,7 +106,7 @@ class _SignUpPageState extends State<SignUpPage> {
         SizedBox(height: 33.h),
         BasicAppButton(
           text: 'Create Account',
-          onPressed: () {},
+          onPressed: () => _createAccount(),
         ),
         SizedBox(height: 40.h),
         _buildDivider(),
@@ -204,4 +208,34 @@ class _SignUpPageState extends State<SignUpPage> {
           ],
         ),
       );
+
+  Future<void> _createAccount() async {
+    final result = await getIt.get<SignUpUsecase>().call(
+      params: CreateUserRequest(
+        name: _fullNameController.text.toString(),
+        email: _emailController.text.toString(),
+        password: _passwordController.text.toString(),
+      ),
+    );
+    result.fold(
+          (error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(error.toString()),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      },
+          (response) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const RootPage(),
+          ),
+              (route) => false,
+        );
+      },
+    );
+  }
 }

@@ -6,7 +6,7 @@ import 'package:spotify_flutter/core/configs/themes/app_color.dart';
 class BasicTextField extends StatefulWidget {
   final TextEditingController? controller;
   final String? hintText;
-  final bool? isObscureText;
+  final bool isObscureText;
   final TextInputType? keyboardType;
   final FocusNode? focusNode;
 
@@ -14,7 +14,7 @@ class BasicTextField extends StatefulWidget {
     super.key,
     this.controller,
     this.hintText,
-    this.isObscureText,
+    this.isObscureText = false,
     this.keyboardType,
     this.focusNode,
   });
@@ -29,6 +29,7 @@ class _BasicTextFieldState extends State<BasicTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       focusNode: widget.focusNode,
       keyboardType: widget.keyboardType ?? TextInputType.text,
       onTapOutside: (event) => widget.focusNode?.unfocus(),
@@ -71,7 +72,7 @@ class _BasicTextFieldState extends State<BasicTextField> {
               )
             : null,
       ),
-      obscureText: widget.isObscureText ?? false,
+      obscureText: widget.isObscureText == true ? _isObscured : false,
     );
   }
 }

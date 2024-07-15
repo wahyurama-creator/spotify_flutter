@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:spotify_flutter/core/configs/themes/app_theme.dart';
+import 'package:spotify_flutter/dependency_injection.dart';
 import 'package:spotify_flutter/firebase_options.dart';
 import 'package:spotify_flutter/presentation/screens/choose_mode/bloc/theme_cubit.dart';
 import 'package:spotify_flutter/presentation/screens/splash/page/splash_page.dart';
@@ -13,6 +14,7 @@ import 'package:spotify_flutter/presentation/screens/splash/page/splash_page.dar
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _initHydratedBloc();
+  await initDependencyInjection();
   await _initFirebase();
   runApp(const MyApp());
 }
